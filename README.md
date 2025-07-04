@@ -1,8 +1,8 @@
 # DIREKTORI FILE
 ```
 LogisticsManagement/
-├── .idea/                 (Folder konfigurasi IntelliJ IDEA)
-├── out/                   (Folder output kompilasi)
+├── .idea/                 
+├── out/                   
 ├── resources/
 │   ├── cities.csv
 │   └── routes.csv
