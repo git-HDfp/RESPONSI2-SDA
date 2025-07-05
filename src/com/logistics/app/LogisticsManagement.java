@@ -34,7 +34,7 @@ public class LogisticsManagement {
     private static final double COST_PER_KM = 1200.0;
 
     public static void main(String[] args) {
-        drawFramedTitle("APLIKASI SIMULASI LOGISTIK OPTIMAL");
+        printBanner();
         System.out.println("\nSelamat datang! Memuat data awal...\n");
 
         deliveryGraph = new Graph();
@@ -85,7 +85,6 @@ public class LogisticsManagement {
                     deliveryZones.printSets(deliveryGraph.getCities());
                     break;
                 case 0:
-                    // saveDataToCsv(); // Panggilan ini dihapus karena save sudah otomatis di addCity/addRoute
                     System.out.println("Terima kasih telah menggunakan aplikasi logistik! Sampai jumpa.");
                     break;
                 default:
@@ -107,7 +106,6 @@ public class LogisticsManagement {
                 System.out.flush();
             }
         } catch (final IOException | InterruptedException e) {
-            // Do nothing if clearing fails, just print normally
         }
     }
 
@@ -135,7 +133,7 @@ public class LogisticsManagement {
         System.out.println("9. Tampilkan Semua Kota");
         System.out.println("10. Tampilkan Jaringan Kota (Graf)");
         System.out.println("11. Tampilkan Zona Pengiriman");
-        System.out.println("0. Keluar Aplikasi"); // Teks menu diubah, karena auto-save saat tambah
+        System.out.println("0. Keluar Aplikasi");
         System.out.println("------------------------------------");
     }
 
@@ -190,7 +188,7 @@ public class LogisticsManagement {
         // [Implementasi - Disjoint Set]
         deliveryZones.makeSet(newCity.getId());
         System.out.println(">> Kota '" + cityName + "' berhasil ditambahkan dengan ID: " + newCity.getId());
-        saveDataToCsv(); // Panggil saveDataToCsv() setelah menambahkan kota
+        saveDataToCsv();
     }
 
     private static void addRouteManually() {
@@ -501,5 +499,15 @@ public class LogisticsManagement {
         double value = scanner.nextDouble();
         scanner.nextLine();
         return value;
+    }
+
+    private static void printBanner(){
+        System.out.println("\n" +
+                "██╗░░░░░░█████╗░░██████╗░██╗░█████╗░░██████╗  ░██████╗████████╗██╗░█████╗░██╗░░██╗\n" +
+                "██║░░░░░██╔══██╗██╔════╝░██║██╔══██╗██╔════╝  ██╔════╝╚══██╔══╝██║██╔══██╗██║░██╔╝\n" +
+                "██║░░░░░██║░░██║██║░░██╗░██║██║░░╚═╝╚█████╗░  ╚█████╗░░░░██║░░░██║██║░░╚═╝█████═╝░\n" +
+                "██║░░░░░██║░░██║██║░░╚██╗██║██║░░██╗░╚═══██╗  ░╚═══██╗░░░██║░░░██║██║░░██╗██╔═██╗░\n" +
+                "███████╗╚█████╔╝╚██████╔╝██║╚█████╔╝██████╔╝  ██████╔╝░░░██║░░░██║╚█████╔╝██║░╚██╗\n" +
+                "╚══════╝░╚════╝░░╚═════╝░╚═╝░╚════╝░╚═════╝░  ╚═════╝░░░░╚═╝░░░╚═╝░╚════╝░╚═╝░░╚═╝");
     }
 }
